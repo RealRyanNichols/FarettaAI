@@ -189,7 +189,7 @@ export default function Home() {
           The Nest, Lead Flow Pro, Premier Dental Academy, RepWatcher. Want in?
         </p>
         <a
-          href="mailto:ryan@realryannichols.com?subject=Gideon%20early%20access"
+          href="/contact"
           className="inline-flex items-center gap-2 px-6 py-[14px] rounded-full bg-gold text-night text-[0.9375rem] font-semibold shadow-[0_8px_30px_rgba(212,168,85,0.25)] transition-all duration-hover hover:-translate-y-[2px] hover:shadow-[0_14px_40px_rgba(212,168,85,0.35)]"
         >
           Request an invitation →

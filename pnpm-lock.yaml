@@ -59,6 +59,9 @@ importers:
       '@gideon/design-tokens':
         specifier: workspace:*
         version: link:../../packages/design-tokens
+      '@supabase/supabase-js':
+        specifier: ^2.45.4
+        version: 2.103.3
       framer-motion:
         specifier: ^11.11.0
         version: 11.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

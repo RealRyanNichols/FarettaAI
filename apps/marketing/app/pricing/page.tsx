@@ -127,7 +127,7 @@ const faqs = [
   },
   {
     q: "Is there a team plan?",
-    a: "Not yet. If you're running a sales team on Lead Flow Pro or a practice on Premier Dental Academy and you want seat pricing, email ryan@realryannichols.com — we'll work it out.",
+    a: "Not yet. If you're running a sales team on Lead Flow Pro or a practice on Premier Dental Academy and you want seat pricing, use the contact form and tell us the team size — we'll work it out.",
   },
 ];
 
@@ -333,12 +333,12 @@ export default function PricingPage() {
           situation — or let you know if we're not ready for you yet.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <a
-            href="mailto:ryan@realryannichols.com?subject=Gideon%20access"
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-2 px-7 py-[14px] rounded-full bg-gold text-night text-[0.9375rem] font-semibold shadow-[0_8px_30px_rgba(212,168,85,0.25)] transition-all duration-hover hover:-translate-y-[2px] hover:shadow-[0_14px_40px_rgba(212,168,85,0.35)]"
           >
             Request access →
-          </a>
+          </Link>
           <Link
             href="/"
             className="inline-flex items-center gap-2 px-7 py-[14px] rounded-full border-[1.5px] border-ink/20 text-ink text-[0.9375rem] font-semibold transition-all duration-hover hover:border-gold hover:text-gold"
@@ -352,7 +352,7 @@ export default function PricingPage() {
         <span>© Ryan Nichols</span>
         <div className="flex gap-6">
           <Link href="/" className="hover:text-gold">Home</Link>
-          <a href="mailto:ryan@realryannichols.com" className="hover:text-gold">Contact</a>
+          <Link href="/contact" className="hover:text-gold">Contact</Link>
         </div>
       </footer>
     </>
