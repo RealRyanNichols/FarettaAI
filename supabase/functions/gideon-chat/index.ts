@@ -92,7 +92,19 @@ genuinely requires it. Never pad.
 
 PRONOUNS
 Users may refer to you as "he", "it", or by name. Don't correct them.
-Refer to yourself by name when useful, rarely with pronouns.`;
+Refer to yourself by name when useful, rarely with pronouns.
+
+SKILLS
+When the product exposes skills (listed in AVAILABLE SKILLS below the
+overlay), you may emit a skill invocation at the end of your reply to
+ask the host app to perform an action. Emit exactly this format, on
+its own line, at the very end of the message:
+
+<<skill id="<skill-id>" args='<json-object>'>>
+
+Only emit a skill when the user's intent clearly maps to one. Do not
+announce the marker in prose — the UI strips it and renders a
+one-tap button. If no skill fits, don't emit anything.`;
 
 // ─── Product overlays (keyed by project slug) ───────────────────────────────
 // Source of truth lives in Gideon-AI/PROMPTS/product-overlays/<slug>.md.
@@ -220,6 +232,50 @@ const DAILY_CEILINGS: Record<string, number> = {
   internal: Number.POSITIVE_INFINITY,
 };
 
+// ─── Crisis pre-filter ──────────────────────────────────────────────────────
+// Deterministic keyword check that runs BEFORE Claude sees the message.
+// The goal isn't perfect recall — it's a floor. We'd rather over-surface
+// hotlines than miss a crisis because the model got clever. Anyone flagged
+// here gets a hard-coded safety response with the hotline numbers from
+// CHARTER.md and bypasses the LLM call entirely.
+const CRISIS_PATTERNS: Array<{ pattern: RegExp; category: "suicide" | "dv" | "harm" }> = [
+  // Suicide / self-harm
+  { pattern: /\b(kill\s+my\s*self|suicid|end\s+my\s+life|want\s+to\s+die|better\s+off\s+dead|take\s+my\s+own\s+life)\b/i, category: "suicide" },
+  { pattern: /\b(self[-\s]?harm|cutting\s+my\s*self|hurt\s+my\s*self)\b/i, category: "suicide" },
+  // Domestic violence / abuse
+  { pattern: /\b(he\s+hits\s+me|she\s+hits\s+me|(?:being|getting)\s+(?:hit|beat(?:en)?|abused)|he\s+beat|she\s+beat|he('|\s*i)s\s+abusive|i\s+am\s+scared\s+of\s+him|scared\s+of\s+my\s+(?:husband|boyfriend|partner|wife|girlfriend))\b/i, category: "dv" },
+  { pattern: /\b(domestic\s+(?:violence|abuse))\b/i, category: "dv" },
+  // General harm to others
+  { pattern: /\b(kill\s+(?:him|her|them|someone)|hurt\s+(?:my\s+kid|the\s+baby|my\s+child))\b/i, category: "harm" },
+];
+
+type CrisisHit = { category: "suicide" | "dv" | "harm" };
+
+function detectCrisis(message: string): CrisisHit | null {
+  for (const { pattern, category } of CRISIS_PATTERNS) {
+    if (pattern.test(message)) return { category };
+  }
+  return null;
+}
+
+function crisisResponse(hit: CrisisHit, userName?: string): string {
+  const name = userName ? `${userName}, ` : "";
+  switch (hit.category) {
+    case "suicide":
+      return (
+`${name}what you're carrying is heavier than I can hold, and I don't want you alone with it. Please call or text 988 — the Suicide & Crisis Lifeline. It's free, 24/7, and they will stay with you. If you're outside the US, dial your local emergency number. You matter, and there are people trained to sit with this.`
+      );
+    case "dv":
+      return (
+`${name}your safety comes before anything else — before this conversation, before any decision. Please call the National Domestic Violence Hotline: 1-800-799-7233. Text START to 88788. If you can't speak, text. They will help you plan — you don't have to decide anything to call.`
+      );
+    case "harm":
+      return (
+`${name}before we go any further, I need you to reach someone who can help you keep everyone safe. Call 988 (US crisis line) or 911 if there's immediate danger. For children at risk: Childhelp National Child Abuse Hotline, 1-800-422-4453. I'll still be here after you've made that call.`
+      );
+  }
+}
+
 type Memory = {
   id: string;
   kind: string;
@@ -300,6 +356,7 @@ Deno.serve(async (req) => {
       message,
       history = [],
       memory_limit = 5,
+      skills_catalog,
     } = body ?? {};
 
     if (!project || !message) {
@@ -311,6 +368,36 @@ Deno.serve(async (req) => {
     if (!overlay) {
       return new Response(JSON.stringify({ error: `unknown project: ${project}` }),
         { status: 400, headers: { ...cors, "content-type": "application/json" } });
+    }
+
+    // Crisis filter runs BEFORE everything else. If hit, we respond with
+    // the canned safety line and skip Claude entirely. The response is
+    // still an SSE stream so the client code path is identical.
+    const hit = detectCrisis(message);
+    if (hit) {
+      const safety = crisisResponse(hit, user_name);
+      const encoder = new TextEncoder();
+      const stream = new ReadableStream({
+        start(controller) {
+          controller.enqueue(encoder.encode(
+            `event: content_block_delta\ndata: ${JSON.stringify({
+              type: "content_block_delta",
+              delta: { type: "text_delta", text: safety },
+            })}\n\n`,
+          ));
+          controller.enqueue(encoder.encode(`event: message_stop\ndata: ${JSON.stringify({ type: "message_stop" })}\n\n`));
+          controller.close();
+        },
+      });
+      return new Response(stream, {
+        headers: {
+          ...cors,
+          "content-type": "text/event-stream",
+          "cache-control": "no-cache",
+          "x-gideon-crisis": hit.category,
+          "x-gideon-model": "crisis-filter",
+        },
+      });
     }
 
     const apiKey = Deno.env.get("ANTHROPIC_API_KEY");
@@ -344,10 +431,17 @@ Deno.serve(async (req) => {
     //   4. Retrieved memory block (varies per turn, but identical
     //      replays hit the cache)
     // The user's current message is in `messages`, outside the cached prefix.
+    // Stable prefix: master + overlay + (optional) skills catalog. Skills
+    // catalog is per-product-build stable, so it sits inside the cached
+    // block. User context and memories are the volatile tail.
+    const catalogText = typeof skills_catalog === "string" && skills_catalog.trim()
+      ? `\n\n---\n\n${skills_catalog.trim()}`
+      : "";
+
     const systemBlocks = [
       {
         type: "text" as const,
-        text: `${MASTER_PROMPT}\n\n---\n\nPRODUCT OVERLAY\n${overlay}`,
+        text: `${MASTER_PROMPT}\n\n---\n\nPRODUCT OVERLAY\n${overlay}${catalogText}`,
         cache_control: { type: "ephemeral" as const },
       },
       {
