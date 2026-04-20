@@ -1,6 +1,8 @@
-import { createServerClient } from "@supabase/ssr";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
+
+type CookieSet = { name: string; value: string; options: CookieOptions };
 
 // Anon-key server client bound to the operator's auth cookie. Used to
 // check "is the operator logged in" on page loads.
@@ -12,7 +14,7 @@ export async function getUserClient() {
     {
       cookies: {
         getAll: () => cookieStore.getAll(),
-        setAll: (all) => {
+        setAll: (all: CookieSet[]) => {
           for (const { name, value, options } of all) {
             cookieStore.set(name, value, options);
           }
