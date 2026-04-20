@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gideon.ai";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Gideon — Truth, tested.",
   description:
     "An AI for operators — with evidence. Gideon learns from a network of real people building real things. Built by Ryan Nichols.",
