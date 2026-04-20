@@ -1,0 +1,31 @@
+{
+  "name": "@gideon/design-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Machine-readable Gideon design tokens — palette, type scale, spacing, motion — plus a Tailwind preset that consumes them.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tailwind": {
+      "types": "./dist/tailwind-preset.d.ts",
+      "import": "./dist/tailwind-preset.js"
+    },
+    "./tokens.json": "./src/tokens.json",
+    "./tokens.css": "./src/tokens.css",
+    "./logo": "./assets/logo.svg"
+  },
+  "files": ["dist", "src/tokens.json", "src/tokens.css", "assets"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
