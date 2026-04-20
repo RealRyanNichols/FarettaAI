@@ -1,0 +1,24 @@
+{
+  "name": "@gideon/skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skill registry Gideon uses to turn 'tell me to do X' into 'run the product's X'. A skill is a contract the host app implements; the registry calls the handler and returns the result to Gideon.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
