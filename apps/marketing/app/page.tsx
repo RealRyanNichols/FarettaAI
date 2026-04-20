@@ -10,12 +10,20 @@ export default function Home() {
           <img src="/brand/logo.svg" alt="Gideon mark" className="w-7 h-7" />
           <span>Gideon</span>
         </div>
-        <a
-          href="#access"
-          className="px-[18px] py-[9px] bg-gold text-night rounded-full text-[0.8125rem] font-semibold transition-transform duration-hover hover:-translate-y-[1px] hover:shadow-[0_10px_30px_rgba(212,168,85,0.3)]"
-        >
-          Get access
-        </a>
+        <div className="flex items-center gap-4">
+          <a
+            href="/pricing"
+            className="hidden sm:inline-flex text-[0.8125rem] font-semibold text-mist hover:text-gold transition-colors"
+          >
+            Pricing
+          </a>
+          <a
+            href="#access"
+            className="px-[18px] py-[9px] bg-gold text-night rounded-full text-[0.8125rem] font-semibold transition-transform duration-hover hover:-translate-y-[1px] hover:shadow-[0_10px_30px_rgba(212,168,85,0.3)]"
+          >
+            Get access
+          </a>
+        </div>
       </nav>
 
       <header className="relative min-h-[100svh] flex flex-col justify-center pt-[120px] pb-20 px-6 max-w-g-desktop mx-auto">
