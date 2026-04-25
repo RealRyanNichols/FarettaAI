@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Faretta mark — a serif "F" whose left stroke is a Doric column with
+  a pediment, and whose horizontal arm holds a balance scale. Navy
+  with gilt accents. Reads as a column at small sizes, F + scale at
+  larger sizes.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="frt-pan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E0B864"/>
+      <stop offset="1" stop-color="#A37718"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pediment (triangular roof on the column) -->
+  <path d="M22 14 L52 14 L37 4 Z" fill="#1A2332"/>
+  <!-- Pediment under-bar (gilt accent) -->
+  <rect x="22" y="14" width="30" height="2.4" fill="#C8941A"/>
+
+  <!-- Architrave (horizontal block on top of column shaft) -->
+  <rect x="20" y="17" width="34" height="3" fill="#1A2332"/>
+
+  <!-- Column shaft with three flutes -->
+  <rect x="24" y="20" width="26" height="80" fill="#1A2332"/>
+  <rect x="29" y="22" width="1.5" height="76" fill="#FBF7EE" opacity="0.18"/>
+  <rect x="36.25" y="22" width="1.5" height="76" fill="#FBF7EE" opacity="0.18"/>
+  <rect x="43.5" y="22" width="1.5" height="76" fill="#FBF7EE" opacity="0.18"/>
+
+  <!-- Column base (two-tier plinth) -->
+  <rect x="20" y="100" width="34" height="4" fill="#1A2332"/>
+  <rect x="17" y="104" width="40" height="4" fill="#1A2332"/>
+
+  <!-- Upper arm of the F (top serif) — extends right from the architrave -->
+  <path d="M54 17 L100 17 L100 23 L60 23 L60 30 L54 30 Z" fill="#1A2332"/>
+
+  <!-- Mid arm of the F — short horizontal stroke -->
+  <rect x="54" y="48" width="28" height="6" fill="#1A2332"/>
+
+  <!-- Balance scale hanging from the upper arm of F -->
+  <!-- Crossbeam -->
+  <line x1="74" y1="28" x2="74" y2="40" stroke="#C8941A" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Fulcrum knob -->
+  <circle cx="74" cy="40" r="1.8" fill="#C8941A"/>
+  <!-- Chains -->
+  <line x1="74" y1="41" x2="66" y2="50" stroke="#C8941A" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="74" y1="41" x2="82" y2="50" stroke="#C8941A" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Pan (curved) -->
+  <path d="M62 50 L86 50 Q74 64 62 50 Z" fill="url(#frt-pan)"/>
+  <path d="M62 50 L86 50" stroke="#A37718" stroke-width="1" fill="none"/>
+</svg>

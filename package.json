@@ -1,15 +1,16 @@
 {
-  "name": "gideon-ai",
+  "name": "faretta-ai",
   "version": "0.1.0",
   "private": true,
-  "description": "Gideon AI — canonical home repo. Docs, shared memory package, Supabase infra, operator dashboard, and marketing site.",
+  "description": "Faretta AI — canonical home repo. Docs, shared memory package, Supabase infra, operator dashboard, and marketing site.",
   "packageManager": "pnpm@9.12.3",
   "engines": {
     "node": ">=20.11"
   },
   "scripts": {
-    "dev:marketing": "pnpm --filter @gideon/marketing dev",
-    "dev:dashboard": "pnpm --filter @gideon/dashboard dev",
+    "dev": "pnpm --filter @faretta/marketing dev",
+    "dev:dashboard": "pnpm --filter @faretta/dashboard dev",
+    "dev:legacy-gideon": "pnpm --filter @faretta/legacy-gideon-marketing dev",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck"
   }

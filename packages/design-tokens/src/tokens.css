@@ -1,53 +1,53 @@
-/* Gideon design tokens — CSS custom properties.
-   Source of truth: Gideon-AI/DESIGN.md (palette + type scale). */
+/* Faretta design tokens — CSS custom properties.
+   Source of truth: Faretta-AI/DESIGN.md (palette + type scale). */
 
 :root {
   /* Palette — primary */
-  --g-night:    #0A0E1A;
-  --g-midnight: #131826;
-  --g-slate:    #1E2538;
-  --g-slate-2:  #2A324A;
-  --g-ink:      #F4EFE4;
-  --g-mist:     #9CA3B8;
-  --g-mist-2:   #6F7794;
+  --f-night:    #0A0E1A;
+  --f-midnight: #131826;
+  --f-slate:    #1E2538;
+  --f-slate-2:  #2A324A;
+  --f-ink:      #F4EFE4;
+  --f-mist:     #9CA3B8;
+  --f-mist-2:   #6F7794;
 
   /* Palette — accent */
-  --g-gold:  #D4A855;
-  --g-ember: #C8913E;
-  --g-flame: #FF6B2C;
+  --f-gold:  #D4A855;
+  --f-ember: #C8913E;
+  --f-flame: #FF6B2C;
 
   /* Palette — signal */
-  --g-truth: #7DD3A8;
-  --g-warn:  #F5C77A;
-  --g-wrath: #F28A8A;
+  --f-truth: #7DD3A8;
+  --f-warn:  #F5C77A;
+  --f-wrath: #F28A8A;
 
   /* Gradients */
-  --g-gradient-hero:     linear-gradient(135deg, #0A0E1A 0%, #131826 40%, #1A2038 100%);
-  --g-gradient-flame:    linear-gradient(180deg, #FF6B2C 0%, #D4A855 55%, #C8913E 100%);
-  --g-gradient-wordmark: linear-gradient(135deg, #D4A855 0%, #F4EFE4 50%, #D4A855 100%);
+  --f-gradient-hero:     linear-gradient(135deg, #0A0E1A 0%, #131826 40%, #1A2038 100%);
+  --f-gradient-flame:    linear-gradient(180deg, #FF6B2C 0%, #D4A855 55%, #C8913E 100%);
+  --f-gradient-wordmark: linear-gradient(135deg, #D4A855 0%, #F4EFE4 50%, #D4A855 100%);
 
   /* Typography */
-  --g-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --g-font-serif: Georgia, 'Times New Roman', serif;
-  --g-tracking-display: -0.015em;
-  --g-tracking-body: -0.005em;
-  --g-tracking-wordmark: 0.12em;
-  --g-tracking-kicker: 0.2em;
+  --f-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --f-font-serif: Georgia, 'Times New Roman', serif;
+  --f-tracking-display: -0.015em;
+  --f-tracking-body: -0.005em;
+  --f-tracking-wordmark: 0.12em;
+  --f-tracking-kicker: 0.2em;
 
   /* Radius — no squircles past 28px */
-  --g-radius-primary: 20px;
-  --g-radius-secondary: 14px;
-  --g-radius-pill: 999px;
+  --f-radius-primary: 20px;
+  --f-radius-secondary: 14px;
+  --f-radius-pill: 999px;
 
   /* Spacing — 8px base grid */
-  --g-space-base: 8px;
-  --g-gutter-mobile: 20px;
-  --g-gutter-tablet: 32px;
-  --g-gutter-desktop: 48px;
-  --g-max-content-mobile: 720px;
-  --g-max-content-desktop: 1120px;
+  --f-space-base: 8px;
+  --f-gutter-mobile: 20px;
+  --f-gutter-tablet: 32px;
+  --f-gutter-desktop: 48px;
+  --f-max-content-mobile: 720px;
+  --f-max-content-desktop: 1120px;
 
-  /* Motion — Gideon flickers, he does not bounce */
-  --g-hover-ms: 120ms;
-  --g-press-ms: 90ms;
+  /* Motion — Faretta flickers, he does not bounce */
+  --f-hover-ms: 120ms;
+  --f-press-ms: 90ms;
 }

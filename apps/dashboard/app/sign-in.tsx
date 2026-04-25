@@ -33,7 +33,7 @@ export default function SignInForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="you@example.com"
-        className="px-4 py-3 rounded-g-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
+        className="px-4 py-3 rounded-f-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
       />
       <button
         type="submit"

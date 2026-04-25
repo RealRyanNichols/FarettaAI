@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { hashContent } from "@gideon/brain-memory";
+import { hashContent } from "@faretta/brain-memory";
 
 const KINDS = ["tactic", "script", "story", "question", "answer", "note"] as const;
 const TIERS = ["public", "core", "ultra", "internal"] as const;
@@ -60,7 +60,7 @@ export default function ComposeForm() {
         <input
           value={project}
           onChange={(e) => setProject(e.target.value)}
-          className="px-4 py-2 rounded-g-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
+          className="px-4 py-2 rounded-f-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
         />
       </label>
       <label className="flex flex-col gap-1">
@@ -68,7 +68,7 @@ export default function ComposeForm() {
         <select
           value={kind}
           onChange={(e) => setKind(e.target.value as typeof kind)}
-          className="px-4 py-2 rounded-g-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
+          className="px-4 py-2 rounded-f-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
         >
           {KINDS.map((k) => (
             <option key={k} value={k}>{k}</option>
@@ -82,7 +82,7 @@ export default function ComposeForm() {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           rows={6}
-          className="px-4 py-2 rounded-g-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold font-sans"
+          className="px-4 py-2 rounded-f-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold font-sans"
         />
       </label>
       <label className="flex flex-col gap-1">
@@ -90,7 +90,7 @@ export default function ComposeForm() {
         <input
           value={tagsInput}
           onChange={(e) => setTagsInput(e.target.value)}
-          className="px-4 py-2 rounded-g-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
+          className="px-4 py-2 rounded-f-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
         />
       </label>
       <label className="flex flex-col gap-1">
@@ -98,7 +98,7 @@ export default function ComposeForm() {
         <select
           value={tier}
           onChange={(e) => setTier(e.target.value as typeof tier)}
-          className="px-4 py-2 rounded-g-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
+          className="px-4 py-2 rounded-f-secondary bg-midnight border border-ink/20 text-ink outline-none focus:border-gold"
         >
           {TIERS.map((t) => (
             <option key={t} value={t}>{t}</option>

@@ -14,7 +14,7 @@ create table if not exists contact_requests (
   email           text not null,
   company         text,
   -- Product they are interested in or came from. Optional — use
-  -- "nest" | "lfp" | "repwatcher" | "pda" | "rrn" | "gideon".
+  -- "nest" | "lfp" | "repwatcher" | "pda" | "rrn" | "faretta".
   product         text,
   -- Tier they want, if they picked one. "free" | "core" | "ultra" | "team".
   tier_of_interest text,

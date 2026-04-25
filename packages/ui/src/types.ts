@@ -1,9 +1,9 @@
-// Shared types for the Gideon UI package. Kept thin on purpose — the
-// server (gideon-chat Edge Function) is the source of truth for the
+// Shared types for the Faretta UI package. Kept thin on purpose — the
+// server (faretta-chat Edge Function) is the source of truth for the
 // conversation contract.
 
-export type GideonProject = "nest" | "lfp" | "repwatcher" | "pda" | "rrn";
-export type GideonTier = "free" | "core" | "ultra" | "internal";
+export type FarettaProject = "nest" | "lfp" | "repwatcher" | "pda" | "rrn";
+export type FarettaTier = "free" | "core" | "ultra" | "internal";
 
 export type ChatRole = "user" | "assistant";
 
@@ -15,24 +15,24 @@ export interface ChatMessage {
   at?: number;
 }
 
-export interface GideonChatProps {
+export interface FarettaChatProps {
   /**
-   * The URL of the gideon-chat Edge Function. Required — there is no
+   * The URL of the faretta-chat Edge Function. Required — there is no
    * default because every product embeds its own Supabase project URL.
    */
   endpoint: string;
 
   /** Product slug so the server can load the right overlay. */
-  project: GideonProject;
+  project: FarettaProject;
 
   /** Subscription tier — drives model routing and memory access. */
-  tier: GideonTier;
+  tier: FarettaTier;
 
   /** User-facing name. Injected into the system prompt when present. */
   userName?: string;
 
   /**
-   * Opaque per-user context the product wants Gideon to see — current
+   * Opaque per-user context the product wants Faretta to see — current
    * tab, roles, Heart status, etc. Rendered into the system prompt as
    * "key: value" lines.
    */
@@ -46,10 +46,10 @@ export interface GideonChatProps {
 
   /**
    * Whether the widget is open on first render. Defaults to false —
-   * Gideon should be invited in, not pushed.
+   * Faretta should be invited in, not pushed.
    */
   defaultOpen?: boolean;
 
-  /** Override the trigger label ("Ask Gideon" by default). */
+  /** Override the trigger label ("Ask Faretta" by default). */
   triggerLabel?: string;
 }

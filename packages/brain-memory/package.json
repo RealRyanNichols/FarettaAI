@@ -1,8 +1,8 @@
 {
-  "name": "@gideon/brain-memory",
+  "name": "@faretta/brain-memory",
   "version": "0.1.0",
   "private": true,
-  "description": "Shared ingest + query client for the Gideon brain_memory layer. Imported by every product app in the portfolio.",
+  "description": "Shared ingest + query client for the Faretta brain_memory layer. Imported by every product app in the portfolio.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

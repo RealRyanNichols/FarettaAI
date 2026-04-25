@@ -10,7 +10,7 @@ let contributing = false;
 
 export function setProject(name: string): void {
   if (!name || typeof name !== "string") {
-    throw new Error("[@gideon/brain-memory] setProject requires a non-empty string");
+    throw new Error("[@faretta/brain-memory] setProject requires a non-empty string");
   }
   project = name;
 }
@@ -18,7 +18,7 @@ export function setProject(name: string): void {
 export function getProject(): string {
   if (!project) {
     throw new Error(
-      "[@gideon/brain-memory] setProject(...) must be called before ingest/query. " +
+      "[@faretta/brain-memory] setProject(...) must be called before ingest/query. " +
         "Each product app registers its own project name at boot.",
     );
   }
@@ -32,7 +32,7 @@ export function setHost(h: Host): void {
 export function getHost(): Host {
   if (!host) {
     throw new Error(
-      "[@gideon/brain-memory] setHost(...) must be called before ingest/query. " +
+      "[@faretta/brain-memory] setHost(...) must be called before ingest/query. " +
         "Pass a Host that provides getSupabase, currentUser, getTier, isContributing, isConfigured.",
     );
   }

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@gideon/design-tokens", "@gideon/brain-memory"],
+  transpilePackages: ["@faretta/design-tokens", "@faretta/brain-memory"],
 };
 
 export default nextConfig;

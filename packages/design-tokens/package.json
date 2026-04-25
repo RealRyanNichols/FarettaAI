@@ -1,8 +1,8 @@
 {
-  "name": "@gideon/design-tokens",
+  "name": "@faretta/design-tokens",
   "version": "0.1.0",
   "private": true,
-  "description": "Machine-readable Gideon design tokens — palette, type scale, spacing, motion — plus a Tailwind preset that consumes them.",
+  "description": "Machine-readable Faretta design tokens — palette, type scale, spacing, motion — plus a Tailwind preset that consumes them.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

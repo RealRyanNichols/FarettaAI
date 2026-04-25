@@ -20,11 +20,11 @@ export class SkillRegistry {
   register(def: SkillDefinition): void {
     if (!def.projects.includes(this.project)) {
       throw new Error(
-        `[gideon/skills] skill '${def.id}' is not declared for project '${this.project}'`,
+        `[faretta/skills] skill '${def.id}' is not declared for project '${this.project}'`,
       );
     }
     if (this.skills.has(def.id)) {
-      throw new Error(`[gideon/skills] skill '${def.id}' already registered`);
+      throw new Error(`[faretta/skills] skill '${def.id}' already registered`);
     }
     this.skills.set(def.id, def);
   }
@@ -42,7 +42,7 @@ export class SkillRegistry {
 
   /**
    * Render the registered skills into a prompt-friendly catalog the
-   * gideon-chat Edge Function can append to the system block. Gideon
+   * faretta-chat Edge Function can append to the system block. Faretta
    * is instructed to emit `<<skill id="..." args='...'>>` markers when
    * he wants to invoke one; the client parses those out of the final
    * assistant message.
@@ -84,7 +84,7 @@ export class SkillRegistry {
 
 /**
  * Parse `<<skill id="..." args='{...}'>>` markers out of an assistant
- * message. Returns the invocations Gideon wants to run, plus the text
+ * message. Returns the invocations Faretta wants to run, plus the text
  * with the markers stripped so the UI can render it cleanly.
  */
 export function parseSkillInvocations(text: string): {
