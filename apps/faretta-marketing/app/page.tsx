@@ -63,7 +63,7 @@ export default function Home() {
       <main className="pt-[88px]">
         {/* Hero with chat front-and-center */}
         <section className="relative px-6 py-10 md:py-14">
-          <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(800px_500px_at_85%_10%,rgba(30,58,138,0.06),transparent_60%),radial-gradient(700px_400px_at_5%_5%,rgba(185,28,28,0.04),transparent_60%)]" />
+          <div className="absolute inset-0 pointer-events-none -z-10 bg-[radial-gradient(800px_500px_at_85%_10%,rgba(59,130,246,0.10),transparent_60%),radial-gradient(700px_400px_at_5%_5%,rgba(239,68,68,0.06),transparent_60%)]" />
 
           <div className="max-w-f-content mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 items-start">
             <div>

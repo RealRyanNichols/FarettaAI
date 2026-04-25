@@ -78,7 +78,7 @@ export default function ContactPage() {
         </p>
 
         {state.status === "ok" ? (
-          <div className="rounded-f-primary border border-verdict/40 bg-[linear-gradient(180deg,rgba(4,120,87,0.06),rgba(30,58,138,0.04))] p-8">
+          <div className="rounded-f-primary border border-verdict/40 bg-[linear-gradient(180deg,rgba(16,185,129,0.06),rgba(59,130,246,0.04))] p-8">
             <h2 className="font-sans font-extrabold text-[1.5rem] text-ink leading-tight mb-3">
               Got it.
             </h2>
