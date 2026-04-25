@@ -1,8 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "installCommand": "pnpm install --frozen-lockfile --filter=@faretta/marketing...",
+  "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @faretta/marketing build",
-  "outputDirectory": "apps/faretta-marketing/.next",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet -- apps/faretta-marketing supabase/migrations vercel.json package.json pnpm-lock.yaml"
+  "outputDirectory": "apps/faretta-marketing/.next"
 }
