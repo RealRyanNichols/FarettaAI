@@ -107,6 +107,52 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* The Brain */}
+        <section className="px-6 py-16 md:py-20">
+          <div className="max-w-f-prose mx-auto">
+            <span className="inline-block text-[0.75rem] uppercase tracking-kicker text-flag font-semibold mb-3">The Brain</span>
+            <h2 className="font-sans font-extrabold leading-[1.05] tracking-display text-ink mb-5 text-[clamp(1.75rem,3.5vw,2.5rem)]">
+              Faretta gets smarter every day.
+            </h2>
+            <p className="text-ink-2 text-[1.0625rem] leading-[1.65] mb-4">
+              Behind the chat is a Brain — a deduplicated, tagged corpus of every conversation Faretta has
+              ever had. When you ask a question, Faretta doesn't just lean on the model; it pulls in the
+              real-world experience of everyone who has stood where you're standing. The more people use
+              Faretta, the sharper Faretta gets — for you, and for the next person.
+            </p>
+            <p className="text-ink-2 text-[1.0625rem] leading-[1.65] mb-6">
+              That growth is the strategy. Free, Patriot, and Liberty all feed the same Brain. Partner
+              sites that embed Faretta — RepWatchr.com, Faretta.Legal, TheLeadFlowPro.com, others —
+              feed the same Brain. The corpus is the moat.
+            </p>
+
+            <ol className="space-y-3 mb-6">
+              {[
+                ["Gather", "Every chat turn, every contribution, every witness tip, every attorney lead — they all become Brain rows."],
+                ["Hold",   "Supabase persists the corpus. Names and contact info live on separate tables and are never joined into training context."],
+                ["Grow",   "Retrieval gets sharper as the corpus grows. Summarization compresses repetition. Tier gating rewards the people who contribute most."],
+                ["Serve",  "Every next user gets answers backed by what the Brain has learned. Aggregate, anonymized insights help researchers and legal-tech partners. Individual conversations are not for sale, ever."],
+              ].map(([h, p], i) => (
+                <li key={h} className="flex gap-4 p-4 rounded-f-card border border-ink/10 bg-paper">
+                  <span className="font-mono text-[0.875rem] text-liberty font-bold shrink-0 w-8">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-bold text-ink text-[0.9375rem] mb-0.5">{h}</h3>
+                    <p className="text-ink-2 text-[0.9375rem] leading-[1.55]">{p}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <p className="text-mute text-[0.875rem] leading-[1.55]">
+              Your name and direct contact information are kept separate from the substance the Brain
+              learns from. You can delete everything from your account at any time. The full picture is
+              on the <Link href="/privacy" className="text-liberty hover:underline">privacy page</Link>.
+            </p>
+          </div>
+        </section>
+
         {/* Founder */}
         <section className="px-6 py-16 md:py-20 bg-paper border-y border-ink/[0.08]">
           <div className="max-w-f-prose mx-auto">
