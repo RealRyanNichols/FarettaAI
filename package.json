@@ -10,6 +10,7 @@
   "scripts": {
     "dev:marketing": "pnpm --filter @gideon/marketing dev",
     "dev:dashboard": "pnpm --filter @gideon/dashboard dev",
+    "dev:faretta": "pnpm --filter @faretta/marketing dev",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck"
   }
