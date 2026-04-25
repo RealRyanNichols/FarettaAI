@@ -1,9 +1,9 @@
-export { GideonChat } from "./GideonChat";
-export { useGideonStream } from "./useGideonStream";
+export { FarettaChat } from "./FarettaChat";
+export { useFarettaStream } from "./useFarettaStream";
 export type {
   ChatMessage,
   ChatRole,
-  GideonChatProps,
-  GideonProject,
-  GideonTier,
+  FarettaChatProps,
+  FarettaProject,
+  FarettaTier,
 } from "./types";

@@ -5,9 +5,9 @@ const siteUrl = process.env.NEXT_PUBLIC_FARETTA_SITE_URL ?? "https://faretta.ai"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Faretta AI — A voice for the voiceless.",
+  title: "Faretta AI — Represent Yourself. Not Alone.",
   description:
-    "Stand up for yourself, pro se, with case law in your corner. Faretta AI is a chat-first legal companion for people whose rights have been violated and who don't have anyone to speak for them. Named for Faretta v. California (1975) — the right to represent yourself.",
+    "AI-powered self-representation tools. Faretta is a chat-first legal companion for people standing up for themselves pro se, with case law in your corner. Named for Faretta v. California (1975) — the Sixth Amendment right to represent yourself.",
   keywords: [
     "Faretta AI",
     "pro se",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     "civil rights",
   ],
   openGraph: {
-    title: "Faretta AI — A voice for the voiceless.",
-    description: "Stand up for yourself, pro se, with case law in your corner.",
+    title: "Faretta AI — Represent Yourself. Not Alone.",
+    description: "AI-powered self-representation tools, with case law in your corner.",
     type: "website",
     images: ["/brand/logo.svg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Faretta AI — A voice for the voiceless.",
-    description: "Stand up for yourself, pro se, with case law in your corner.",
+    title: "Faretta AI — Represent Yourself. Not Alone.",
+    description: "AI-powered self-representation tools, with case law in your corner.",
   },
   icons: { icon: "/brand/mark.svg" },
 };

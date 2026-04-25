@@ -1,6 +1,6 @@
 import tokens from "./tokens.json" with { type: "json" };
 
-// A Tailwind 3+ compatible preset that exposes the Gideon palette,
+// A Tailwind 3+ compatible preset that exposes the Faretta palette,
 // type scale, radii, and font families as Tailwind utilities.
 const preset = {
   theme: {
@@ -25,9 +25,9 @@ const preset = {
         wrath: tokens.color.wrath,
       },
       backgroundImage: {
-        "g-hero": tokens.gradient.heroOverhead,
-        "g-flame": tokens.gradient.flameMark,
-        "g-wordmark": tokens.gradient.wordmark,
+        "f-hero": tokens.gradient.heroOverhead,
+        "f-flame": tokens.gradient.flameMark,
+        "f-wordmark": tokens.gradient.wordmark,
       },
       fontFamily: {
         sans: [tokens.font.family.sans],
@@ -42,22 +42,22 @@ const preset = {
       },
       fontSize: {
         hero: tokens.font.size.hero,
-        "g-h1": tokens.font.size.h1,
-        "g-h2": tokens.font.size.h2,
-        "g-body": tokens.font.size.body,
-        "g-caption": tokens.font.size.caption,
+        "f-h1": tokens.font.size.h1,
+        "f-h2": tokens.font.size.h2,
+        "f-body": tokens.font.size.body,
+        "f-caption": tokens.font.size.caption,
       },
       borderRadius: {
-        "g-primary": tokens.radius.primary,
-        "g-secondary": tokens.radius.secondary,
+        "f-primary": tokens.radius.primary,
+        "f-secondary": tokens.radius.secondary,
       },
       transitionDuration: {
         hover: `${tokens.motion.hoverMs}ms`,
         press: `${tokens.motion.pressMs}ms`,
       },
       maxWidth: {
-        "g-mobile": tokens.spacing.maxContentMobile,
-        "g-desktop": tokens.spacing.maxContentDesktop,
+        "f-mobile": tokens.spacing.maxContentMobile,
+        "f-desktop": tokens.spacing.maxContentDesktop,
       },
     },
   },

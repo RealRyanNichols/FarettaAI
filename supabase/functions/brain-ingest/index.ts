@@ -16,7 +16,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 
 // TODO(T5): import shared contracts (Kind, AccessTier, ingest payload) from
-// `@gideon/brain-memory/types` once the package is published to a Deno-
+// `@faretta/brain-memory/types` once the package is published to a Deno-
 // compatible registry. Until then, the payload shape is inlined below.
 
 const cors = {

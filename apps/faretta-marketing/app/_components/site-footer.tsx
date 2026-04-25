@@ -5,14 +5,17 @@ export function SiteFooter() {
     <footer className="border-t border-ink/[0.08] bg-paper">
       <div className="max-w-f-content mx-auto px-6 py-10">
         <div className="flex flex-wrap items-start justify-between gap-8">
-          <div className="max-w-[320px]">
-            <div className="flex items-center gap-2 mb-2 font-semibold tracking-wordmark uppercase text-[0.8125rem] text-ink">
-              <img src="/brand/logo.svg" alt="" className="w-5 h-5" />
-              <span>Faretta&nbsp;AI</span>
+          <div className="max-w-[340px]">
+            <div className="flex items-center gap-2.5 mb-3 text-ink">
+              <img src="/brand/logo.svg" alt="" className="w-7 h-7" />
+              <span className="font-serif text-[1.25rem] leading-none">Faretta</span>
             </div>
-            <p className="text-mute text-[0.875rem] leading-[1.55]">
-              A voice for the voiceless. Pro se legal information for people standing up for themselves —
-              with case law, in plain English, in your corner.
+            <p className="text-ink-2 text-[0.9375rem] leading-[1.55] font-serif italic mb-1">
+              Represent Yourself. Not Alone.
+            </p>
+            <p className="text-mute text-[0.8125rem] leading-[1.55]">
+              AI-powered self-representation tools. Case law in plain English, in your corner —
+              for the moment you have to stand up for yourself.
             </p>
           </div>
 

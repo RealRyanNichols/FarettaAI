@@ -10,10 +10,10 @@ importers:
 
   apps/dashboard:
     dependencies:
-      '@gideon/brain-memory':
+      '@faretta/brain-memory':
         specifier: workspace:*
         version: link:../../packages/brain-memory
-      '@gideon/design-tokens':
+      '@faretta/design-tokens':
         specifier: workspace:*
         version: link:../../packages/design-tokens
       '@supabase/ssr':
@@ -109,9 +109,9 @@ importers:
         specifier: ^5.6.3
         version: 5.9.3
 
-  apps/marketing:
+  apps/legacy-gideon-marketing:
     dependencies:
-      '@gideon/design-tokens':
+      '@faretta/design-tokens':
         specifier: workspace:*
         version: link:../../packages/design-tokens
       '@supabase/supabase-js':

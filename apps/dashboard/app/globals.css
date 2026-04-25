@@ -1,14 +1,14 @@
-@import "@gideon/design-tokens/tokens.css";
+@import "@faretta/design-tokens/tokens.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: var(--g-font-sans);
-  background: var(--g-night);
-  color: var(--g-ink);
-  letter-spacing: var(--g-tracking-body);
+  font-family: var(--f-font-sans);
+  background: var(--f-night);
+  color: var(--f-ink);
+  letter-spacing: var(--f-tracking-body);
   -webkit-font-smoothing: antialiased;
 }
 

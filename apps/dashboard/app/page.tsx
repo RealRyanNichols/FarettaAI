@@ -26,7 +26,7 @@ export default async function HomePage() {
       <ul className="grid grid-cols-3 gap-4 max-[720px]:grid-cols-1">
         <Link
           href="/memories"
-          className="block p-6 bg-midnight rounded-g-primary border border-ink/[0.06] hover:border-gold/25"
+          className="block p-6 bg-midnight rounded-f-primary border border-ink/[0.06] hover:border-gold/25"
         >
           <div className="text-[0.75rem] tracking-kicker uppercase text-gold mb-2">01</div>
           <div className="text-[1.125rem] font-semibold mb-1">Memories</div>
@@ -34,7 +34,7 @@ export default async function HomePage() {
         </Link>
         <Link
           href="/compose"
-          className="block p-6 bg-midnight rounded-g-primary border border-ink/[0.06] hover:border-gold/25"
+          className="block p-6 bg-midnight rounded-f-primary border border-ink/[0.06] hover:border-gold/25"
         >
           <div className="text-[0.75rem] tracking-kicker uppercase text-gold mb-2">02</div>
           <div className="text-[1.125rem] font-semibold mb-1">Compose</div>
@@ -42,7 +42,7 @@ export default async function HomePage() {
         </Link>
         <Link
           href="/stats"
-          className="block p-6 bg-midnight rounded-g-primary border border-ink/[0.06] hover:border-gold/25"
+          className="block p-6 bg-midnight rounded-f-primary border border-ink/[0.06] hover:border-gold/25"
         >
           <div className="text-[0.75rem] tracking-kicker uppercase text-gold mb-2">03</div>
           <div className="text-[1.125rem] font-semibold mb-1">Stats</div>

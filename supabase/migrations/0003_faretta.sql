@@ -2,10 +2,10 @@
 -- Faretta AI: contact requests, attorney leads, witness tips, API keys,
 -- and the chat-message log that feeds Faretta's brain.
 --
--- Same Supabase project as Gideon. All tables prefixed `faretta_*` so
--- they cannot collide with Gideon's `brain_memory` (0001) or
--- `contact_requests` (0002). RLS is on for everything; writes for
--- public surfaces happen via service-role from Next.js routes.
+-- All tables prefixed `faretta_*` so they cannot collide with the
+-- existing brain_memory (0001) or contact_requests (0002) tables.
+-- RLS is on for everything; writes for public surfaces happen via
+-- service-role from Next.js routes.
 
 -- ─────────────────────────────────────────────────────────────────────
 -- 1. Contact form submissions

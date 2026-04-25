@@ -2,7 +2,7 @@
 //
 // Streams Claude back to the browser as Server-Sent Events. The page-
 // embedded <FarettaChat /> component reads the stream and renders text
-// as it arrives. Same wire format the gideon-chat Edge Function uses,
+// as it arrives. Same wire format the faretta-chat Edge Function uses,
 // so the embed widget can target either endpoint.
 //
 // Request body:

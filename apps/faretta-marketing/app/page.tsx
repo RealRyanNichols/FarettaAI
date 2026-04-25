@@ -69,18 +69,19 @@ export default function Home() {
             <div>
               <div className="inline-flex items-center gap-2 text-[0.6875rem] uppercase tracking-kicker font-semibold text-flag mb-5">
                 <span className="w-1.5 h-1.5 rounded-full bg-flag" />
-                <span>A voice for the voiceless</span>
+                <span>AI-powered self-representation tools</span>
               </div>
 
-              <h1 className="font-sans font-extrabold leading-[1.02] tracking-display text-ink mb-6 text-[clamp(2.25rem,6vw,4.25rem)]">
-                Stand up for yourself.{" "}
-                <span className="bg-f-wordmark bg-clip-text text-transparent">Pro&nbsp;se.</span>
+              <h1 className="font-serif leading-[1.02] tracking-tight text-ink mb-3 text-[clamp(2.5rem,6.5vw,4.5rem)]">
+                Represent Yourself.
+                <br />
+                <span className="bg-f-wordmark bg-clip-text text-transparent italic">Not Alone.</span>
               </h1>
               <div className="f-stripes max-w-[280px] mb-7" />
 
               <p className="text-ink-2 text-[clamp(1.0625rem,1.7vw,1.25rem)] leading-[1.55] max-w-[560px] mb-7">
                 Your rights have been violated. You're down to the last straw. You need somebody — and the
-                only somebody you have is you. <strong className="text-ink">Faretta AI is in your corner.</strong>{" "}
+                only somebody you have is you. <strong className="text-ink">Faretta is in your corner.</strong>{" "}
                 Free legal information, case law in plain English, and the right next step.
               </p>
 

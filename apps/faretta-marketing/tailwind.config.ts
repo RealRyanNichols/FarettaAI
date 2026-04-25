@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
-// Faretta palette — American, hopeful, light. Distinct from Gideon's
-// dark/bronze/biblical theme. No dark backgrounds.
+// Faretta palette — American, hopeful, light. No dark backgrounds.
 //   parchment: warm cream — primary background
 //   paper:     pure white surface
 //   ink:       soft near-black — primary text
@@ -9,8 +8,9 @@ import type { Config } from "tailwindcss";
 //   flag:      American red — secondary accent / emphasis
 //   gold:      gilt — "justice" accent
 //
-// Reuses Inter via Google Fonts (declared in app/layout.tsx). Type scale
-// and spacing are local because Faretta's mark and rhythm differ from Gideon.
+// Inter (sans) + Libre Caslon Text (serif) via Google Fonts; declared
+// in app/layout.tsx. The serif carries the Faretta wordmark; the sans
+// carries body and UI copy.
 
 const config: Config = {
   content: [

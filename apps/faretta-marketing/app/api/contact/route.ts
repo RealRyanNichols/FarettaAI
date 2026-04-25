@@ -1,6 +1,5 @@
-// POST /api/contact — public contact form. Mirrors apps/marketing's
-// contact route but writes to faretta_contact_requests so Faretta and
-// Gideon submissions don't comingle.
+// POST /api/contact — public contact form. Writes to
+// faretta_contact_requests via service-role.
 //
 // Honeypot field `hp` silently 200s so bots don't tune their attack.
 // IP is SHA-256 hashed before storage.

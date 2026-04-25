@@ -10,7 +10,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 
 // TODO(T5): import shared contracts (Memory, tier hierarchy, query payload)
-// from `@gideon/brain-memory/types` once published to a Deno-compatible
+// from `@faretta/brain-memory/types` once published to a Deno-compatible
 // registry. Until then, TIER_RANK and shapes are inlined below.
 
 const cors = {
