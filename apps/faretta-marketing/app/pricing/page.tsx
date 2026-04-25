@@ -8,7 +8,7 @@ import { SiteFooter } from "../_components/site-footer";
 type Cadence = "monthly" | "yearly";
 
 type Tier = {
-  id: string;
+  id: "free" | "patriot" | "liberty";
   name: string;
   blurb: string;
   monthly: number;
@@ -16,7 +16,6 @@ type Tier = {
   yearlyNote: string;
   model: string;
   cta: string;
-  ctaHref: string;
   emphasized: boolean;
   includes: string[];
   excludes: string[];
@@ -32,7 +31,6 @@ const TIERS: Tier[] = [
     yearlyNote: "Always free",
     model: "Claude Haiku 4.5",
     cta: "Start chatting",
-    ctaHref: "/",
     emphasized: false,
     includes: [
       "Unlimited starter conversations",
@@ -48,7 +46,7 @@ const TIERS: Tier[] = [
     ],
   },
   {
-    id: "pro",
+    id: "patriot",
     name: "Patriot",
     blurb: "Most people who actually have a matter need this. Affordable on purpose.",
     monthly: 5,
@@ -56,7 +54,6 @@ const TIERS: Tier[] = [
     yearlyNote: "$50/yr · save $10",
     model: "Claude Sonnet 4.6",
     cta: "Go Patriot",
-    ctaHref: "/contact?tier=pro",
     emphasized: true,
     includes: [
       "Everything in Free",
@@ -80,7 +77,6 @@ const TIERS: Tier[] = [
     yearlyNote: "$200/yr · save $40",
     model: "Claude Opus 4.7",
     cta: "Go Liberty",
-    ctaHref: "/contact?tier=liberty",
     emphasized: false,
     includes: [
       "Everything in Patriot",
@@ -127,6 +123,36 @@ const FAQS = [
 
 export default function PricingPage() {
   const [cadence, setCadence] = useState<Cadence>("monthly");
+  const [pendingTier, setPendingTier] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function startCheckout(tier: Tier["id"]) {
+    if (tier === "free") {
+      window.location.href = "/";
+      return;
+    }
+    setPendingTier(tier);
+    setError(null);
+    try {
+      const res = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ tier, cadence }),
+      });
+      const body = (await res.json().catch(() => ({}))) as { url?: string; redirect?: string; error?: string };
+      if (res.status === 401 && body.redirect) {
+        window.location.href = body.redirect;
+        return;
+      }
+      if (!res.ok || !body.url) {
+        throw new Error(body.error || `Checkout failed (${res.status})`);
+      }
+      window.location.href = body.url;
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Unknown error");
+      setPendingTier(null);
+    }
+  }
 
   return (
     <>
@@ -207,17 +233,19 @@ export default function PricingPage() {
                     <span className="text-mute text-[0.8125rem]">{t.monthly === 0 ? "" : note}</span>
                   </div>
 
-                  <Link
-                    href={t.ctaHref}
+                  <button
+                    type="button"
+                    onClick={() => startCheckout(t.id)}
+                    disabled={pendingTier === t.id}
                     className={[
-                      "inline-flex items-center justify-center w-full px-5 py-3 rounded-full text-[0.9375rem] font-semibold mb-6 transition-all duration-hover hover:-translate-y-[1px]",
+                      "inline-flex items-center justify-center w-full px-5 py-3 rounded-full text-[0.9375rem] font-semibold mb-6 transition-all duration-hover hover:-translate-y-[1px] disabled:opacity-60 disabled:cursor-not-allowed",
                       t.emphasized
                         ? "bg-flag text-paper shadow-f-cta hover:bg-flag-deep"
                         : "border border-ink/20 text-ink hover:border-liberty hover:text-liberty",
                     ].join(" ")}
                   >
-                    {t.cta}
-                  </Link>
+                    {pendingTier === t.id ? "Redirecting…" : t.cta}
+                  </button>
 
                   <ul className="space-y-2 text-[0.9375rem] leading-[1.4] mb-3">
                     {t.includes.map((line) => (
@@ -241,6 +269,13 @@ export default function PricingPage() {
               );
             })}
           </div>
+          {error && (
+            <p className="mt-6 text-objection text-[0.875rem] text-center">{error}</p>
+          )}
+          <p className="mt-6 text-mute text-[0.75rem] text-center">
+            Payments are processed securely by Stripe. You'll create or sign in to an account before
+            checkout. Cancel any time from the billing portal in your dashboard.
+          </p>
         </section>
 
         {/* FAQ */}

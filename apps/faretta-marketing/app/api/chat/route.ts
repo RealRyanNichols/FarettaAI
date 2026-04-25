@@ -25,7 +25,8 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { FARETTA_MASTER_PROMPT } from "@/lib/system-prompt";
-import { getAdminClient } from "@/lib/supabase-server";
+import { getAdminClient, getUserClient } from "@/lib/supabase-server";
+import { modelForTier as modelForResolvedTier, statusGrantsAccess, type Tier } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -33,7 +34,7 @@ export const dynamic = "force-dynamic";
 type ChatBody = {
   message?: string;
   history?: Array<{ role: "user" | "assistant"; content: string }>;
-  tier?: "free" | "pro" | "liberty";
+  tier?: "free" | "patriot" | "liberty";  // hint only — server resolves real tier from subscription
   surface?: string;
   visitor_id?: string;
 };
@@ -64,14 +65,27 @@ function crisisReply(c: "suicide" | "dv" | "harm"): string {
   }
 }
 
-function modelForTier(tier?: string): string {
-  switch (tier) {
-    case "liberty":
-      return "claude-opus-4-7";
-    case "pro":
-      return "claude-sonnet-4-6";
-    default:
-      return "claude-haiku-4-5";
+// Resolve the caller's effective tier. Signed-in users with an
+// active/trialing subscription get the tier their subscription grants.
+// Anonymous visitors are always "free". The client tier hint is
+// ignored — never trust the browser to pick the model.
+async function resolveTier(): Promise<Tier> {
+  try {
+    const sb = await getUserClient();
+    const { data } = await sb.auth.getUser();
+    const user = data.user;
+    if (!user) return "free";
+    const admin = getAdminClient();
+    const { data: row } = await admin
+      .from("faretta_subscriptions")
+      .select("tier, status")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    if (!row) return "free";
+    return statusGrantsAccess(row.status as never) ? ((row.tier as Tier) ?? "free") : "free";
+  } catch (e) {
+    console.error("[faretta/chat] resolveTier failed:", e);
+    return "free";
   }
 }
 
@@ -122,7 +136,7 @@ export async function POST(req: Request) {
     });
   }
 
-  const tier = body.tier ?? "free";
+  const tier = await resolveTier();
   const history = (body.history ?? [])
     .filter((h) => h && (h.role === "user" || h.role === "assistant") && typeof h.content === "string")
     .slice(-12); // cap history to keep token budget sane
@@ -165,7 +179,7 @@ export async function POST(req: Request) {
   }
 
   const anthropic = new Anthropic({ apiKey });
-  const model = modelForTier(tier);
+  const model = modelForResolvedTier(tier);
 
   const system = [
     {
