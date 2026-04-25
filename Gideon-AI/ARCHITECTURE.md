@@ -36,7 +36,7 @@ same migration runs in every Gideon-integrated product.
 ```sql
 brain_memory(
   id              uuid pk,
-  project         text NOT NULL,         -- 'nest' | 'lfp' | 'repwatcher' | ...
+  project         text NOT NULL,         -- 'nest' | 'lfp' | 'repwatcher' | 'pda' | 'rrn' | 'faretta'
   source_user_id  uuid references auth.users,
   source_tier     text,                  -- 'free' | 'core' | 'ultra' | 'internal'
   kind            text NOT NULL,         -- tactic | script | story | question | answer | note

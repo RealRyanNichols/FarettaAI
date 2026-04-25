@@ -2,7 +2,7 @@
 // server (gideon-chat Edge Function) is the source of truth for the
 // conversation contract.
 
-export type GideonProject = "nest" | "lfp" | "repwatcher" | "pda" | "rrn";
+export type GideonProject = "nest" | "lfp" | "repwatcher" | "pda" | "rrn" | "faretta";
 export type GideonTier = "free" | "core" | "ultra" | "internal";
 
 export type ChatRole = "user" | "assistant";
