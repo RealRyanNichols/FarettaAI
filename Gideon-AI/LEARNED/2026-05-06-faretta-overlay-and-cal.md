@@ -93,3 +93,44 @@ this is the URL.
   this one) and grep the marketing app for `cal.com/realryannichols`.
 - If we add a team scheduling tool, this stays the founder/intro URL
   unless explicitly replaced.
+
+## 3. vercel.json: scope the deploy to the marketing app
+
+The Vercel project `faretta-ai` was failing builds with
+`Module not found: Can't resolve '@gideon/brain-memory'` while building
+the dashboard. Two compounding issues:
+
+- The Vercel project root is the repo root, and the root `build`
+  script is `pnpm -r build` — which builds **everything**, including
+  the dashboard. The dashboard imports `@gideon/brain-memory`.
+- pnpm's default workspace concurrency fired the dashboard's
+  `next build` in parallel with — or before — `brain-memory`'s
+  `tsc`, so the dashboard webpack pass couldn't resolve the
+  unbuilt package.
+
+**Fix:** added `vercel.json` at the repo root. It scopes the build to
+the marketing app and its workspace dependency graph, with serial
+ordering to defeat the concurrency race:
+
+```json
+{
+  "buildCommand": "pnpm -r --workspace-concurrency=1 --filter @gideon/marketing... run build",
+  "outputDirectory": "apps/marketing/.next"
+}
+```
+
+Why this is correct, not just expedient:
+
+- The `faretta-ai` Vercel project is for the public marketing site.
+  The dashboard is private and described as "me-only" — it should
+  not deploy to this Vercel project at all.
+- The marketing app does not depend on `@gideon/brain-memory`, only
+  on `@gideon/design-tokens`. Filtering to `@gideon/marketing...`
+  builds exactly what is needed and skips the dashboard entirely.
+- `--workspace-concurrency=1` enforces topological order. Without it,
+  pnpm 9.12.3 in CI environments has been observed firing app builds
+  before package builds finish.
+
+**Revisit if** the dashboard ever needs to deploy on Vercel — at that
+point spin up a separate Vercel project for it with its own root
+directory and build command, do not merge them into this one.
