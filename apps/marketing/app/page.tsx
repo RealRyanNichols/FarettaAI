@@ -12,6 +12,12 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-4">
           <a
+            href="/faretta-legal"
+            className="hidden sm:inline-flex text-[0.8125rem] font-semibold text-mist hover:text-gold transition-colors"
+          >
+            Faretta · Legal
+          </a>
+          <a
             href="/pricing"
             className="hidden sm:inline-flex text-[0.8125rem] font-semibold text-mist hover:text-gold transition-colors"
           >
@@ -186,14 +192,28 @@ export default function Home() {
         </h2>
         <p className="text-mist text-[1.0625rem] max-w-[620px] mx-auto mb-8 leading-[1.6]">
           Early access goes to the operators already inside Ryan&apos;s products —
-          The Nest, Lead Flow Pro, Premier Dental Academy, RepWatcher. Want in?
+          The Nest, Lead Flow Pro, Premier Dental Academy, RepWatcher,{" "}
+          <a href="/faretta-legal" className="text-gold hover:text-flame">
+            Faretta · Legal
+          </a>
+          . Want in?
         </p>
-        <a
-          href="/contact"
-          className="inline-flex items-center gap-2 px-6 py-[14px] rounded-full bg-gold text-night text-[0.9375rem] font-semibold shadow-[0_8px_30px_rgba(212,168,85,0.25)] transition-all duration-hover hover:-translate-y-[2px] hover:shadow-[0_14px_40px_rgba(212,168,85,0.35)]"
-        >
-          Request an invitation →
-        </a>
+        <div className="flex flex-wrap justify-center gap-3">
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-[14px] rounded-full bg-gold text-night text-[0.9375rem] font-semibold shadow-[0_8px_30px_rgba(212,168,85,0.25)] transition-all duration-hover hover:-translate-y-[2px] hover:shadow-[0_14px_40px_rgba(212,168,85,0.35)]"
+          >
+            Request an invitation →
+          </a>
+          <a
+            href="https://cal.com/realryannichols"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-[14px] rounded-full border-[1.5px] border-gold/50 text-gold text-[0.9375rem] font-semibold transition-all duration-hover hover:-translate-y-[2px] hover:border-gold hover:bg-gold/5"
+          >
+            Book a call
+          </a>
+        </div>
       </section>
 
       <footer className="border-t border-ink/[0.06] py-10 px-6 text-center text-mist-2 text-[0.8125rem]">
@@ -206,7 +226,11 @@ export default function Home() {
           <a href="/" className="text-mist">
             The Nest
           </a>
-          , Lead Flow Pro, RepWatcher, and Premier Dental Academy of Longview.
+          , Lead Flow Pro, RepWatcher, Premier Dental Academy of Longview, and{" "}
+          <a href="/faretta-legal" className="text-mist hover:text-gold">
+            Faretta Legal
+          </a>
+          .
         </p>
         <p className="mt-3 opacity-70 text-[0.75rem] tracking-[0.1em] uppercase">
           The sword of the LORD, and of Gideon.

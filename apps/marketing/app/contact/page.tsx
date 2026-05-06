@@ -16,6 +16,7 @@ const products = [
   { value: "lfp", label: "Lead Flow Pro — sales pipelines" },
   { value: "repwatcher", label: "RepWatcher — reviews + reputation" },
   { value: "pda", label: "Premier Dental Academy" },
+  { value: "faretta", label: "Faretta · Legal — pro se & drafting" },
   { value: "gideon", label: "Gideon — the AI itself" },
   { value: "other", label: "Something else" },
 ];
@@ -94,10 +95,22 @@ export default function ContactPage() {
             <span className="bg-g-wordmark bg-clip-text text-transparent">trying to build.</span>
           </h1>
 
-          <p className="text-mist max-w-[620px] mb-10 leading-[1.6] text-[clamp(1rem,2vw,1.125rem)]">
+          <p className="text-mist max-w-[620px] mb-6 leading-[1.6] text-[clamp(1rem,2vw,1.125rem)]">
             We read every message. If you are a fit for one of Ryan&apos;s products,
             we&apos;ll route you. If you aren&apos;t, we&apos;ll tell you that too.
           </p>
+
+          <div className="mb-10 flex flex-wrap items-center gap-3 text-[0.875rem]">
+            <span className="text-mist-2">Prefer to talk?</span>
+            <a
+              href="https://cal.com/realryannichols"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-[1.5px] border-gold/40 text-gold font-semibold hover:border-gold hover:bg-gold/10 transition-colors"
+            >
+              Book a call on cal.com →
+            </a>
+          </div>
         </motion.div>
 
         {state.status === "ok" ? (

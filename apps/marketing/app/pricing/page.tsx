@@ -97,6 +97,12 @@ const products = [
     lives: "Training + operations. Business-first tool for clinicians.",
   },
   {
+    name: "Faretta · Legal",
+    for: "Operators without counsel.",
+    slug: "faretta",
+    lives: "Pro se drafting, jurisdiction-aware filings, deadline tracking. Cited authority, not vibes.",
+  },
+  {
     name: "realryannichols.com",
     for: "Founders evaluating Ryan.",
     slug: "rrn",
@@ -142,12 +148,20 @@ export default function PricingPage() {
           <img src="/brand/logo.svg" alt="Gideon mark" className="w-7 h-7" />
           <span>Gideon</span>
         </Link>
-        <a
-          href="#get-started"
-          className="px-[18px] py-[9px] bg-gold text-night rounded-full text-[0.8125rem] font-semibold transition-transform duration-hover hover:-translate-y-[1px] hover:shadow-[0_10px_30px_rgba(212,168,85,0.3)]"
-        >
-          Get access
-        </a>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/faretta-legal"
+            className="hidden sm:inline-flex text-[0.8125rem] font-semibold text-mist hover:text-gold transition-colors"
+          >
+            Faretta · Legal
+          </Link>
+          <a
+            href="#get-started"
+            className="px-[18px] py-[9px] bg-gold text-night rounded-full text-[0.8125rem] font-semibold transition-transform duration-hover hover:-translate-y-[1px] hover:shadow-[0_10px_30px_rgba(212,168,85,0.3)]"
+          >
+            Get access
+          </a>
+        </div>
       </nav>
 
       <header className="relative pt-[140px] pb-20 px-6 max-w-g-desktop mx-auto">
@@ -176,7 +190,7 @@ export default function PricingPage() {
           </p>
           <p className="text-mist-2 text-[0.875rem]">
             Cancel any time. Every tier works across The Nest, Lead Flow Pro, RepWatcher,
-            Premier Dental Academy, and realryannichols.com.
+            Premier Dental Academy, Faretta · Legal, and realryannichols.com.
           </p>
         </motion.div>
       </header>
@@ -256,7 +270,7 @@ export default function PricingPage() {
           Where Gideon lives
         </span>
         <h2 className="font-display font-display-weight leading-[1.05] tracking-[-0.02em] max-w-[720px] mb-10 text-[clamp(1.75rem,4vw,2.75rem)]">
-          One subscription. Five products. Same Gideon.
+          One subscription. Six products. Same Gideon.
         </h2>
         <div className="grid grid-cols-2 gap-4 max-[720px]:grid-cols-1">
           {products.map((p) => (
@@ -352,6 +366,7 @@ export default function PricingPage() {
         <span>© Ryan Nichols</span>
         <div className="flex gap-6">
           <Link href="/" className="hover:text-gold">Home</Link>
+          <Link href="/faretta-legal" className="hover:text-gold">Faretta · Legal</Link>
           <Link href="/contact" className="hover:text-gold">Contact</Link>
         </div>
       </footer>
